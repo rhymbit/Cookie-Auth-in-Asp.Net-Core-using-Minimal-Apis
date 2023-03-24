@@ -27,8 +27,8 @@ public class CookieService
         {
             Domain = _config["CookieOptions:Domain"],
             HttpOnly = true,
-            SameSite = SameSiteMode.Lax,
-            //Secure = true,
+            SameSite = SameSiteMode.Strict,
+            Secure = true,
         };
     }
 }

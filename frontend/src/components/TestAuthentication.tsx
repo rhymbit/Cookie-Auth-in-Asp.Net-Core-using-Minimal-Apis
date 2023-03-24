@@ -13,16 +13,15 @@ const TestAuthentication = () => {
       credentials: "include",
     })
       .then(async (res) => {
-        if (!res.ok) {
-          const err = await res.json();
-          throw new Error(err);
+        if (res.status === 401) {
+          throw new Error("Unauthorized. Please login");
         }
         const results = await res.json();
         setResults(results);
       })
       .catch((err) => {
         setResults(null);
-        setErrors(err);
+        setErrors(err.message);
       });
   };
 
